@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi preciosa 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(to right, #C8A2C8, #ffb6c1);
+            font-family: 'Open Sans', sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        /* Estilos para el encabezado principal */
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #ff0040;
+            font-size: 3.5em;
+            margin-top: 50px;
+            animation: latido 1s infinite alternate;
+            user-select: none;
+            cursor: pointer;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+            animation-delay: 0.5s;
+        }
+
+        /* Estilos para los párrafos */
+        p {
+            font-size: 1.2em;
+            color: #444;
+            margin: 20px auto;
+            max-width: 800px;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+            animation-delay: 1s;
+        }
+        
+        /* Ajuste de los retrasos para una mejor animación de aparición */
+        header p:nth-of-type(1) { animation-delay: 1.2s; }
+        header p:nth-of-type(2) { animation-delay: 1.4s; }
+        header p:nth-of-type(3) { animation-delay: 1.6s; }
+        header p:nth-of-type(4) { animation-delay: 1.8s; }
+        main h1 { animation-delay: 2.0s; }
+        main p:nth-of-type(1) { animation-delay: 2.2s; }
+        main p:nth-of-type(2) { animation-delay: 2.4s; }
+        main p:nth-of-type(3) { animation-delay: 2.6s; }
+        main p:nth-of-type(4) { animation-delay: 2.8s; }
+
+        /* Animación de latido para el título */
+        @keyframes latido {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        /* Animación de aparición */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estilo para los corazones que caen */
+        .corazon {
+            position: fixed;
+            color: red;
+            font-size: 20px;
+            animation: caer 6s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        /* Animación de caída de corazones */
+        @keyframes caer {
+            0% { transform: translateY(-10vh) translateX(0); opacity: 0; }
+            10% { opacity: 0.7; }
+            100% { transform: translateY(110vh) translateX(50px); opacity: 0; }
+        }
+
+        /* Estilo polaroid */
+        .polaroid-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin: 50px 0;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+            animation-delay: 3s;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 15px 15px 40px;
+            border-radius: 8px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .polaroid:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0px 12px 24px rgba(0,0,0,0.4);
+        }
+
+        .polaroid img,
+        .polaroid video {
+            width: 280px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            display: block;
+        }
+
+        .caption {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.8em;
+            margin-top: 15px;
+            color: #555;
+            text-align: center;
+        }
+
+        /* Estilos para el mensaje secreto */
+        .secreto {
+            position: relative;
+            cursor: pointer;
+            color: #ff0040;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .mensaje-oculto {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffe6f0;
+            padding: 8px 12px;
+            border-radius: 5px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .secreto:hover .mensaje-oculto {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Estilo para el efecto de máquina de escribir */
+        .typewriter-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: .15em solid orange;
+            margin: 0 auto;
+            letter-spacing: .05em;
+            animation:
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+            width: 0;
+        }
+
+        /* Animación de la máquina de escribir */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        /* Animación del cursor parpadeante */
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange; }
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #666;
+            font-size: 0.9em;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+            animation-delay: 5s;
+        }
+
+        /* Media queries para pantallas más pequeñas */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            p {
+                font-size: 1.1em;
+                margin: 15px 10px;
+            }
+
+            .polaroid img,
+            .polaroid video {
+                width: 220px;
+                height: 180px;
+            }
+
+            .caption {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+                margin-top: 30px;
+            }
+
+            p {
+                font-size: 1em;
+                margin: 10px 5px;
+            }
+
+            .polaroid-container {
+                gap: 20px;
+            }
+
+            .polaroid img,
+            .polaroid video {
+                width: 180px;
+                height: 150px;
+            }
+
+            .caption {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="tituloSonido" data-song="mi_persona_favorita">Para mi preciosaaa</h1>
+        <p>
+            Eres la <span class="secreto">razón <span class="mensaje-oculto">Gracias por mi musa </span></span> de mi felicidad.
+        </p>
+        <p class="typewriter-text" data-text="Te amo mucho, eres la razón de mi felicidad, te extraño cada segundo del día."></p>
+        <p>Esperando saber de ti, y escuchando con muchas ansias tus voice contándome todo tu día.</p>
+        <p>"No quiero que se caiga este momento mágico, por eso me pongo romántico"</p>
+        <p>Te amo tanto como amo el chocolate🤠❤️</p>
+    </header>
+
+    <main>
+        <div class="polaroid-container">
+            <div class="polaroid">
+                <img src="imagen1.jpg" alt="Nosotros" />
+                <div class="caption">Amo esa fotoo❤️</div>
+            </div>
+
+            <div class="polaroid">
+                <video controls autoplay loop muted>
+                    <source src="video.MOV" type="video/mp4" />
+                    Tu navegador no soporta video.
+                </video>
+                <div class="caption">Mi sapita linda 💕</div>
+            </div>
+        </div>
+
+        <h1 class="tituloSonido" data-song="reinapepiada">Te extraño, crj!</h1>
+        <p>Yo no sé cómo puedes dormir y dejarme solito por muchísimo tiempo, dejándome botado, ¿no te das cuenta que te extraño o qué? <br> ¿No ves que te necesito conmigo? Que muero por saber qué haces. ¿Tu niño mimado te extraña muchísimo, sabías? ¡Te amo! Ya levántate, porfa.</p>
+        <p>No soy nerd, pero si TÚ nerd y por ti descubro hasta un nuevo planeta<3</p>
+        <p>Me puse a hacer una pagina mientras estas ruca (supongo)</p>
+
+        <div class="polaroid-container">
+            <div class="polaroid">
+                <img src="imagen3.jpeg" alt="Regresenme a esos días" />
+                <div class="caption">Regresenme a esos días</div>
+            </div>
+            
+            <div class="polaroid">
+                <video controls autoplay loop muted>
+                    <source src="video2.mp4" type="video/mp4" />
+                    Tu navegador no soporta video.
+                </video>
+                <div class="caption">LovelovLove</div>
+            </div>
+        </div>
+        
+        <p>Permiteme robarme tu corazon <br>
+           Permiteme decirte que te quiero <br>
+           Que yo sin ti me muero <br>
+           Que quiero hacerte mia <br>
+           Para toda la vida <br>
+        </p>
+    </main>
+
+    <audio id="musicaFondo" loop muted>
+        <source src="mi_persona_favorita.mp3" type="audio/mpeg" />
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <audio id="musicaReina" loop muted>
+        <source src="reinapepiada.mp3" type="audio/mpeg" />
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <footer>
+        <p>09/08/2025 <br> Perdón por no haber ido a verte en las olimpiadas pipipi</p>
+    </footer>
+
+    <script>
+        // --- Control de Audio ---
+        const titulos = document.querySelectorAll(".tituloSonido");
+        const musica1 = document.getElementById("musicaFondo");
+        const musica2 = document.getElementById("musicaReina");
+        let audioActivado = false;
+
+        titulos.forEach(titulo => {
+            titulo.addEventListener("click", () => {
+                if (!audioActivado) {
+                    const songToPlay = titulo.dataset.song;
+
+                    if (songToPlay === "mi_persona_favorita") {
+                        musica1.muted = false;
+                        musica1.volume = 0.7;
+                        musica1.play().catch(error => console.log("Error al reproducir mi_persona_favorita:", error));
+                    } else if (songToPlay === "reinapepiada") {
+                        musica2.muted = false;
+                        musica2.volume = 0.7;
+                        musica2.play().catch(error => console.log("Error al reproducir reinapepiada:", error));
+                    }
+                    audioActivado = true;
+
+                    // Desactiva el evento para todos los títulos después del primer clic
+                    titulos.forEach(t => {
+                        t.style.cursor = "default";
+                        t.removeEventListener("click", this); // "this" se refiere al evento actual
+                    });
+                }
+            });
+        });
+
+        // --- Corazones Cayendo (El resto del script no ha cambiado) ---
+        function crearCorazon() {
+            const corazon = document.createElement("span");
+            corazon.classList.add("corazon");
+            corazon.innerHTML = "❤️";
+            corazon.style.left = Math.random() * 100 + "vw";
+            corazon.style.animationDuration = Math.random() * 3 + 3 + "s";
+            corazon.style.animationDelay = Math.random() * 2 + "s";
+            document.body.appendChild(corazon);
+            corazon.addEventListener("animationend", () => {
+                corazon.remove();
+            });
+        }
+        setInterval(crearCorazon, 300);
+
+        // --- Efecto de Máquina de Escribir ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const typewriterElements = document.querySelectorAll(".typewriter-text");
+            typewriterElements.forEach(element => {
+                const text = element.dataset.text;
+                element.style.width = "0";
+                element.innerHTML = "";
+                if (!element.style.animation) {
+                    element.style.animation = `typing ${text.length * 0.15}s steps(${text.length}, end) forwards, blink-caret .75s step-end infinite`;
+                }
+                element.innerHTML = text;
+            });
+        }); 
+    </script>
+</body>
+</html>
